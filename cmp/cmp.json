@@ -1,0 +1,14 @@
+{
+  "categories": [
+    "necessary",
+    "preferences",
+    "statistics",
+    "marketing"
+  ],
+  "default": {
+    "necessary": true,
+    "preferences": false,
+    "statistics": false,
+    "marketing": false
+  }
+}

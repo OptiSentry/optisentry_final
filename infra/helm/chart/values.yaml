@@ -1,0 +1,3 @@
+image:
+  repository: ghcr.io/you/optisentry
+  tag: latest
