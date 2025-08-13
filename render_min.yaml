@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: optisentry-minapi
+    env: python
+    region: frankfurt
+    rootDir: services/minapi
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn min_checkout:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: ALLOWED_ORIGINS
+        value: https://optisentry.com,https://www.optisentry.com
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PRICE_PRO
+        sync: false
+      - key: STRIPE_PRICE_BUSINESS
+        sync: false
+      - key: STRIPE_SUCCESS_URL
+        value: https://optisentry.com/app/billing/success
+      - key: STRIPE_CANCEL_URL
+        value: https://optisentry.com/app/billing/cancel
