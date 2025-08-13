@@ -19,3 +19,12 @@ export async function cleanupAuthState() {
     } catch {}
   }
 }
+
+export async function signOut() {
+  try {
+    const { error } = await supabase.auth.signOut({ scope: 'global' });
+    if (error) throw error;
+  } finally {
+    await cleanupAuthState();
+  }
+}
