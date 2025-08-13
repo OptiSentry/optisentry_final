@@ -17,30 +17,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Detect package manager
+        id: pm
+        run: |
+          if [ -f "$FRONTEND_PATH/pnpm-lock.yaml" ]; then echo "pm=pnpm" >> $GITHUB_OUTPUT;           elif [ -f "$FRONTEND_PATH/yarn.lock" ]; then echo "pm=yarn" >> $GITHUB_OUTPUT;           else echo "pm=npm" >> $GITHUB_OUTPUT; fi
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Install deps
         run: |
-          if [ -f "$FRONTEND_PATH/pnpm-lock.yaml" ]; then
-            corepack enable
-            (cd "$FRONTEND_PATH" && pnpm install --frozen-lockfile)
-          elif [ -f "$FRONTEND_PATH/yarn.lock" ]; then
-            (cd "$FRONTEND_PATH" && yarn install --frozen-lockfile)
-          else
-            (cd "$FRONTEND_PATH" && npm ci)
-          fi
+          if [ "${ steps.pm.outputs.pm }" = "pnpm" ]; then corepack enable && (cd "$FRONTEND_PATH" && pnpm install --frozen-lockfile);           elif [ "${ steps.pm.outputs.pm }" = "yarn" ]; then (cd "$FRONTEND_PATH" && yarn install --frozen-lockfile);           else (cd "$FRONTEND_PATH" && npm ci); fi
       - name: Build
+        run: (cd "$FRONTEND_PATH" && (npm run build || yarn build || pnpm build))
+      - name: Prepare artifact (SPA fallback + CNAME)
         run: |
-          (cd "$FRONTEND_PATH" && npm run build || yarn build || pnpm build)
-      - name: Prepare artifact
-        run: |
-          cp "$FRONTEND_PATH/dist/index.html" "$FRONTEND_PATH/dist/404.html"
+          cp "$FRONTEND_PATH/dist/index.html" "$FRONTEND_PATH/dist/404.html" || true
           echo "optisentry.com" > "$FRONTEND_PATH/dist/CNAME"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${ env.FRONTEND_PATH }/dist
+          path: ${{ env.FRONTEND_PATH }}/dist
   deploy:
     runs-on: ubuntu-latest
     needs: build
