@@ -93,7 +93,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="card-hover">
+                <Card className="card-hover glass">
                   <CardHeader>
                     <Shield className="h-10 w-10 text-primary mb-4" />
                     <CardTitle>Passwordless Security</CardTitle>
@@ -116,7 +116,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="card-hover">
+                <Card className="card-hover glass">
                   <CardHeader>
                     <Zap className="h-10 w-10 text-primary mb-4" />
                     <CardTitle>DSGVO-konform</CardTitle>
@@ -139,7 +139,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <Card className="card-hover">
+                <Card className="card-hover glass">
                   <CardHeader>
                     <Users className="h-10 w-10 text-primary mb-4" />
                     <CardTitle>Enterprise-Ready</CardTitle>
@@ -167,7 +167,7 @@ const Index = () => {
             </div>
             
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <Card>
+              <Card className="card-hover glass">
                 <CardHeader>
                   <CardTitle>Pro</CardTitle>
                   <div className="text-3xl font-bold">299€<span className="text-lg font-normal">/Monat</span></div>
@@ -177,7 +177,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="ring-2 ring-primary">
+              <Card className="ring-2 ring-primary card-hover glass">
                 <CardHeader>
                   <CardTitle>Business</CardTitle>
                   <div className="text-3xl font-bold">1.499€<span className="text-lg font-normal">/Monat</span></div>
@@ -187,7 +187,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="card-hover glass">
                 <CardHeader>
                   <CardTitle>Enterprise</CardTitle>
                   <div className="text-3xl font-bold">Kontakt</div>
