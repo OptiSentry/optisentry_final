@@ -363,9 +363,7 @@ All colors MUST be HSL.
 
 /* Global Apple-like background + glass effects */
 @layer base {
-  :root {
-    --radius: 14px;
-  }
+  :root { --radius: 14px; }
   body {
     font-family: Inter, -apple-system, system-ui, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     background:
@@ -375,8 +373,6 @@ All colors MUST be HSL.
     background-attachment: fixed;
   }
 }
-
-/* Futuristic card hover + glass */
 .glass {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -387,52 +383,35 @@ All colors MUST be HSL.
   background: rgba(8, 10, 16, 0.55);
   border-color: rgba(255, 255, 255, 0.06);
 }
-
-.card-hover {
-  position: relative;
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .35s ease;
-}
-.card-hover:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 24px 50px rgba(0,0,0,.35);
-}
+.card-hover { position: relative; transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .35s ease; }
+.card-hover:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 24px 50px rgba(0,0,0,.35); }
 .card-hover::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
   background: linear-gradient(120deg, rgba(255,255,255,.25), rgba(78,156,255,.55), rgba(255,255,255,.25));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: .4; transition: opacity .3s ease;
+}
+.card-hover:hover::before { opacity: .95; }
+
+/* Futuristic grid backdrop */
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(closest-side, rgba(0,0,0,.7), transparent 65%);
   pointer-events: none;
-  opacity: .4;
-  transition: opacity .3s ease;
 }
-.card-hover:hover::before {
-  opacity: .95;
-}
+.gradient-beam { position: absolute; filter: blur(40px); opacity: .45; pointer-events: none; }
+.gradient-beam--1 { inset: -20% 40% auto -10%; height: 60vh; background: radial-gradient(600px 280px at 0% 40%, #3aa3ff, transparent 60%); }
+.gradient-beam--2 { inset: 10% -20% auto 30%; height: 60vh; background: radial-gradient(500px 260px at 100% 0%, #7c4dff, transparent 60%); }
+.gradient-beam--3 { inset: auto 10% -20% 30%; height: 60vh; background: radial-gradient(600px 300px at 40% 100%, #00d1ff, transparent 60%); }
 
-/* Fancy buttons */
-button, .btn {
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-button:hover, .btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(10,132,255,.25);
-}
+/* Magnetic hover effect util */
+.magnetic:hover { transform: translateY(-2px) scale(1.01); }
 
-/* Subtle animated underline for links */
-a {
-  text-underline-offset: 3px;
-  text-decoration-thickness: .06em;
-}
-a:hover {
-  text-decoration: underline;
-}
+/* Accessible focus rings */
+*:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; }
 
-/* Make containers a bit wider */
-.container {
-  max-width: 1120px;
-}
+/* Reset Vite demo defaults */
+#root { max-width: none; padding: 0; text-align: initial; }

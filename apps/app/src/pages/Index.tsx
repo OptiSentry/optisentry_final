@@ -10,7 +10,7 @@ const Index = () => {
   const { isAuthenticated } = useAuthContext()
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">\n      <div className="bg-grid"></div>\n      <div className="gradient-beam gradient-beam--1"></div>\n      <div className="gradient-beam gradient-beam--2"></div>\n      <div className="gradient-beam gradient-beam--3"></div>
       {/* Skip to content link */}
       <a href="#main-content" className="skip-link">
         Zum Hauptinhalt springen
@@ -19,7 +19,7 @@ const Index = () => {
       {/* Header */}
       <header className="border-b">
         <div className="container flex h-16 items-center justify-between">
-          <div className="font-bold text-xl">[Unternehmensname]</div>
+          <div className="font-bold text-xl">OptiSentry</div>
           <nav className="flex items-center space-x-4">
             <Button variant="ghost" onClick={() => navigate('/impressum')}>
               Rechtliches
@@ -66,7 +66,7 @@ const Index = () => {
                   Kostenlos starten
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" className="magnetic" variant="outline">
                   Demo ansehen
                 </Button>
               </div>
@@ -79,7 +79,7 @@ const Index = () => {
           <div className="container">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">
-                Warum [Unternehmensname]?
+                Warum OptiSentry?
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Modernste Technologie trifft auf deutsche Gründlichkeit
@@ -93,15 +93,15 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="card-hover glass">
-                  <CardHeader>
+                <Card className="card-hover">
+                  <Card className="card-hover glass"Header>
                     <Shield className="h-10 w-10 text-primary mb-4" />
-                    <CardTitle>Passwordless Security</CardTitle>
-                    <CardDescription>
+                    <Card className="card-hover glass"Title>Passwordless Security</CardTitle>
+                    <Card className="card-hover glass"Description>
                       Magic Links, Google OAuth und optionale 2FA/MFA
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <Card className="card-hover glass"Content>
                     <p className="text-muted-foreground">
                       Höchste Sicherheit ohne Passwort-Stress. 
                       Moderne Authentifizierung für bessere User Experience.
@@ -116,15 +116,15 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="card-hover glass">
-                  <CardHeader>
+                <Card className="card-hover">
+                  <Card className="card-hover glass"Header>
                     <Zap className="h-10 w-10 text-primary mb-4" />
-                    <CardTitle>DSGVO-konform</CardTitle>
-                    <CardDescription>
+                    <Card className="card-hover glass"Title>DSGVO-konform</CardTitle>
+                    <Card className="card-hover glass"Description>
                       Vollständige Compliance von Tag 1
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <Card className="card-hover glass"Content>
                     <p className="text-muted-foreground">
                       Cookie-Management, Betroffenenrechte, 
                       Audit-Logs und AVV - alles automatisch erfüllt.
@@ -139,15 +139,15 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <Card className="card-hover glass">
-                  <CardHeader>
+                <Card className="card-hover">
+                  <Card className="card-hover glass"Header>
                     <Users className="h-10 w-10 text-primary mb-4" />
-                    <CardTitle>Enterprise-Ready</CardTitle>
-                    <CardDescription>
+                    <Card className="card-hover glass"Title>Enterprise-Ready</CardTitle>
+                    <Card className="card-hover glass"Description>
                       Skalierbar und sicher für Unternehmen
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <Card className="card-hover glass"Content>
                     <p className="text-muted-foreground">
                       Multi-Tenant-Architektur, Rollen-Management 
                       und umfassende Security-Header.
@@ -168,31 +168,31 @@ const Index = () => {
             
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <Card className="card-hover glass">
-                <CardHeader>
-                  <CardTitle>Pro</CardTitle>
+                <Card className="card-hover glass"Header>
+                  <Card className="card-hover glass"Title>Pro</CardTitle>
                   <div className="text-3xl font-bold">299€<span className="text-lg font-normal">/Monat</span></div>
                 </CardHeader>
-                <CardContent>
+                <Card className="card-hover glass"Content>
                   <Button className="w-full">Starten</Button>
                 </CardContent>
               </Card>
 
-              <Card className="ring-2 ring-primary card-hover glass">
-                <CardHeader>
-                  <CardTitle>Business</CardTitle>
+              <Card className="ring-2 ring-primary">
+                <Card className="card-hover glass"Header>
+                  <Card className="card-hover glass"Title>Business</CardTitle>
                   <div className="text-3xl font-bold">1.499€<span className="text-lg font-normal">/Monat</span></div>
                 </CardHeader>
-                <CardContent>
+                <Card className="card-hover glass"Content>
                   <Button className="w-full btn-gradient">Starten</Button>
                 </CardContent>
               </Card>
 
               <Card className="card-hover glass">
-                <CardHeader>
-                  <CardTitle>Enterprise</CardTitle>
+                <Card className="card-hover glass"Header>
+                  <Card className="card-hover glass"Title>Enterprise</CardTitle>
                   <div className="text-3xl font-bold">Kontakt</div>
                 </CardHeader>
-                <CardContent>
+                <Card className="card-hover glass"Content>
                   <Button variant="outline" className="w-full">Kontaktieren</Button>
                 </CardContent>
               </Card>
@@ -204,7 +204,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
-          <div className="font-bold">[Unternehmensname]</div>
+          <div className="font-bold">OptiSentry</div>
           <nav className="flex flex-wrap gap-4 mt-4 md:mt-0">
             <Button variant="link" onClick={() => navigate('/impressum')}>Impressum</Button>
             <Button variant="link" onClick={() => navigate('/datenschutz')}>Datenschutz</Button>

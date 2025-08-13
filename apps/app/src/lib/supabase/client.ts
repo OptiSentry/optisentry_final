@@ -5,7 +5,15 @@ const runtimeEnv = (typeof window !== 'undefined' && (window as any).__ENV__) ||
 const supabaseUrl = (runtimeEnv.VITE_SUPABASE_URL as string) ?? (import.meta.env.VITE_SUPABASE_URL as string)
 const supabaseAnonKey = (runtimeEnv.VITE_SUPABASE_ANON_KEY as string) ?? (import.meta.env.VITE_SUPABASE_ANON_KEY as string)
 if (!supabaseUrl || !supabaseAnonKey) throw new Error('Missing Supabase env vars')
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } })
+export const supabase = (supabaseUrl && supabaseAnonKey)
+  ? createClient<Database>(supabaseUrl, supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } })
+  : ({
+      auth: {
+        async signOut() { return { error: null }; },
+        async signInWithOtp() { return { error: new Error('Supabase nicht konfiguriert') }; },
+      },
+      from() { return { select: async () => ({ data: [], error: null }) }; },
+    } as any);
 
 export async function cleanupAuthState() {
   try {
