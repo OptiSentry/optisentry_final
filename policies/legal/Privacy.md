@@ -1,0 +1,3 @@
+# Datenschutzerklärung
+
+{{COMPANY_NAME}} verarbeitet Daten gem. DSGVO Art. 6...

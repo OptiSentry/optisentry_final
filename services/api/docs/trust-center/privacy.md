@@ -1,0 +1,3 @@
+# Privacy
+
+- See legal docs.

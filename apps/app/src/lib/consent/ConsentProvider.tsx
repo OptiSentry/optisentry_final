@@ -1,0 +1,1 @@
+/* consent provider implemented earlier */

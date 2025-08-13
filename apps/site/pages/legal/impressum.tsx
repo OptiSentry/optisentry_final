@@ -1,0 +1,1 @@
+export default function I(){return <main><h1>Impressum</h1></main>}

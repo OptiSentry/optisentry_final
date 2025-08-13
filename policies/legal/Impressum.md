@@ -1,0 +1,5 @@
+## Impressum
+
+{{COMPANY_NAME}}
+{{ADDRESS}}
+{{EMAIL_CONTACT}}

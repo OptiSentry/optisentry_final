@@ -1,0 +1,18 @@
+{
+  "color": {
+    "brand-500": "#6D5EF8",
+    "brand-700": "#4A3FD9",
+    "bg-950": "#0B0D12",
+    "surface-800": "#1A1F2B",
+    "text-100": "#F5F7FA",
+    "accent-400": "#22D3EE"
+  },
+  "radius": {
+    "xl": "16px",
+    "2xl": "24px"
+  },
+  "font": {
+    "heading": "Space Grotesk",
+    "body": "Inter"
+  }
+}

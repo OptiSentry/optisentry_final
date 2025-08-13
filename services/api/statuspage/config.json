@@ -1,0 +1,17 @@
+{
+  "overall": "operational",
+  "components": [
+    {
+      "name": "API",
+      "status": "operational"
+    },
+    {
+      "name": "Database",
+      "status": "operational"
+    },
+    {
+      "name": "Billing Provider (Stripe)",
+      "status": "operational"
+    }
+  ]
+}
