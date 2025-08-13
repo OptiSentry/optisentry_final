@@ -1,12 +1,8 @@
 # Full Launch (Merged)
-Frontend-Pfad erkannt: **apps/app**
-- Pages-Workflow: `.github/workflows/pages.yml`
-- Frontend ENV Beispiel: `apps/app/.env.production.example`
-- Testseite: `apps/app/public/buy-test.html`
-- Minimal-API: `services/minapi` (+ `render_min.yaml`)
+Erkannter Frontend-Pfad: **apps/app**
 
-**Schnellstart**
-1) Alles committen und nach GitHub pushen.
-2) GitHub Pages auf **GitHub Actions** stellen.
-3) In Render `render_min.yaml` importieren und STRIPE Test-ENVs setzen.
-4) `https://DEINDOMAIN/buy-test.html` öffnen und Checkout testen.
+1) Alles committen & zu GitHub pushen.
+2) GitHub → Settings → Pages → Source = **GitHub Actions**.
+3) Warten bis Action **grün** ist (build + deploy).
+4) Render → `render_min.yaml` importieren, Stripe TEST ENVs setzen.
+5) `https://optisentry.com/buy-test.html` öffnen → Checkout testen.

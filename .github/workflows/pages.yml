@@ -1,42 +1,73 @@
 name: Deploy Vite app to GitHub Pages
+
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: {}
+  workflow_dispatch: { }
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 env:
   FRONTEND_PATH: apps/app
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Detect package manager
-        id: pm
+        id: which
         run: |
-          if [ -f "$FRONTEND_PATH/pnpm-lock.yaml" ]; then echo "pm=pnpm" >> $GITHUB_OUTPUT;           elif [ -f "$FRONTEND_PATH/yarn.lock" ]; then echo "pm=yarn" >> $GITHUB_OUTPUT;           else echo "pm=npm" >> $GITHUB_OUTPUT; fi
+          if [ -f "$FRONTEND_PATH/pnpm-lock.yaml" ]; then echo "value=pnpm" >> $GITHUB_OUTPUT; exit 0; fi
+          if [ -f "$FRONTEND_PATH/yarn.lock" ]; then echo "value=yarn" >> $GITHUB_OUTPUT; exit 0; fi
+          echo "value=npm" >> $GITHUB_OUTPUT
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install deps
+
+      - name: Install deps (pnpm)
+        if: steps.which.outputs.value == 'pnpm'
         run: |
-          if [ "${ steps.pm.outputs.pm }" = "pnpm" ]; then corepack enable && (cd "$FRONTEND_PATH" && pnpm install --frozen-lockfile);           elif [ "${ steps.pm.outputs.pm }" = "yarn" ]; then (cd "$FRONTEND_PATH" && yarn install --frozen-lockfile);           else (cd "$FRONTEND_PATH" && npm ci); fi
+          corepack enable
+          cd "$FRONTEND_PATH"
+          pnpm install --frozen-lockfile
+
+      - name: Install deps (yarn)
+        if: steps.which.outputs.value == 'yarn'
+        run: |
+          cd "$FRONTEND_PATH"
+          yarn install --frozen-lockfile
+
+      - name: Install deps (npm)
+        if: steps.which.outputs.value == 'npm'
+        run: |
+          cd "$FRONTEND_PATH"
+          npm ci
+
       - name: Build
-        run: (cd "$FRONTEND_PATH" && (npm run build || yarn build || pnpm build))
+        run: |
+          cd "$FRONTEND_PATH"
+          npm run build || yarn build || pnpm build
+
       - name: Prepare artifact (SPA fallback + CNAME)
         run: |
           cp "$FRONTEND_PATH/dist/index.html" "$FRONTEND_PATH/dist/404.html" || true
           echo "optisentry.com" > "$FRONTEND_PATH/dist/CNAME"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.FRONTEND_PATH }}/dist
+
   deploy:
     runs-on: ubuntu-latest
     needs: build

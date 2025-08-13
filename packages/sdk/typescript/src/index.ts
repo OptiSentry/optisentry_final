@@ -1,1 +1,0 @@
-export class OptiSentry { constructor(public base: string, public token?: string){} }

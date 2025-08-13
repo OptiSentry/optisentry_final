@@ -1,1 +1,0 @@
-/* api calls to edge functions implemented earlier */

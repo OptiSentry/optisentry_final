@@ -1,1 +1,0 @@
-/* billing page with buttons implemented earlier */
