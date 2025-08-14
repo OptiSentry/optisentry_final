@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Shield, Zap, Users } from 'lucide-react'
+import { Shield, Zap, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ThemeToggle from '@/components/ui/theme-toggle'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -21,16 +21,45 @@ const Index = () => {
       <header className="border-b">
         <div className="container flex h-16 items-center justify-between">
           <div className="font-bold text-xl">OptiSentry</div>
-          <nav className="flex items-center space-x-4">
-            <Button variant="ghost" onClick={() => navigate('/impressum')}>
+          <nav className="flex items-center space-x-2">
+            <a
+              href="#product"
+              className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+            >
+              Produkt
+            </a>
+            <a
+              href="#why"
+              className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+            >
+              Warum OptiSentry
+            </a>
+            <a
+              href="#use-cases"
+              className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+            >
+              Einsatz & Ergänzung
+            </a>
+            <a
+              href="#faq-feedback"
+              className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+            >
+              Fragen & Feedback
+            </a>
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/impressum')}
+              className="hidden md:inline-flex"
+            >
               Rechtliches
-            </a></Button>
+            </Button>
+            <ThemeToggle />
             {isAuthenticated ? (
-              <Button onClick={() => navigate('/app')}>
+              <Button onClick={() => navigate('/app')} className="ml-1">
                 Zur App
               </Button>
             ) : (
-              <Button onClick={() => navigate('/auth/login')}>
+              <Button onClick={() => navigate('/auth/login')} className="ml-1">
                 Anmelden
               </Button>
             )}
@@ -58,26 +87,21 @@ const Index = () => {
                 Passwordless Authentication, vollständige Compliance und 
                 enterprise-ready Security - alles in einer Plattform.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  className="btn-gradient"
-                  onClick={() => navigate('/auth/login')}
-                >
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <Button size="lg" onClick={() => navigate('/auth/login')}>
                   Kostenlos starten
-                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline" asChild><a href="#product">
-                  Demo ansehen
+                <Button size="lg" variant="outline" asChild>
+                  <a href="#product">Demo ansehen</a>
                 </Button>
               </div>
             </motion.div>
           </div>
-        
+
 </section>
 
-{/* Produkt Section */}
-<section id="product" className="py-20 relative">
+  {/* Produkt Section */}
+  <section id="product" className="py-20 relative">
   <div className="bg-grid"></div>
   <div className="container">
     <div className="text-center mb-16">
@@ -148,8 +172,8 @@ const Index = () => {
 </section>
 
 {
-/* Features Section */}
-        <section className="py-20">
+  /* Features Section */}
+        <section id="why" className="py-20">
           <div className="container">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">
@@ -235,7 +259,7 @@ const Index = () => {
 </section>
 
 {/* Produkt Section */}
-<section id="product" className="py-20 relative">
+<section id="product-overview" className="py-20 relative">
   <div className="bg-grid"></div>
   <div className="container">
     <div className="text-center mb-16">
@@ -306,8 +330,8 @@ const Index = () => {
 </section>
 
 {
-/* Pricing Section */}
-        <section className="py-20 bg-muted/50">
+  /* Pricing Section */}
+        <section id="use-cases" className="py-20 bg-muted/50">
           <div className="container">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">Einfache Preisgestaltung</h2>
@@ -340,7 +364,9 @@ const Index = () => {
                   <div className="text-3xl font-bold">Kontakt</div>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" asChild className="w-full"><a href="mailto:sales@optisentry.dev?subject=Enterprise%20Anfrage">Kontaktieren</a></Button>
+                  <Button variant="outline" asChild className="w-full">
+                    <a href="mailto:sales@optisentry.dev?subject=Enterprise%20Anfrage">Kontaktieren</a>
+                  </Button>
                 </CardContent>
               </Card>
             </div>
