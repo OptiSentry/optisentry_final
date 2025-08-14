@@ -4,16 +4,34 @@ declare global { interface Window { __ENV__?: Record<string, string|undefined> }
 const runtimeEnv = (typeof window !== 'undefined' && (window as any).__ENV__) || {} as Record<string, string|undefined>;
 const supabaseUrl = (runtimeEnv.VITE_SUPABASE_URL as string) ?? (import.meta.env.VITE_SUPABASE_URL as string)
 const supabaseAnonKey = (runtimeEnv.VITE_SUPABASE_ANON_KEY as string) ?? (import.meta.env.VITE_SUPABASE_ANON_KEY as string)
-if (!supabaseUrl || !supabaseAnonKey) throw new Error('Missing Supabase env vars')
-export const supabase = (supabaseUrl && supabaseAnonKey)
-  ? createClient<Database>(supabaseUrl, supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } })
-  : ({
-      auth: {
-        async signOut() { return { error: null }; },
-        async signInWithOtp() { return { error: new Error('Supabase nicht konfiguriert') }; },
-      },
-      from() { return { select: async () => ({ data: [], error: null }) }; },
-    } as any);
+
+/**
+ * Create a Supabase client if credentials are provided. If the credentials are missing
+ * (for example when running locally without secrets or when deploying a static demo),
+ * fall back to a no‑op client that implements only the methods used in this application.
+ */
+let supabase: any;
+if (supabaseUrl && supabaseAnonKey) {
+  supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+    auth: { persistSession: true, autoRefreshToken: true },
+  });
+} else {
+  // Fallback demo client: returns empty results and provides no‑op methods
+  console.warn('Supabase credentials missing. Running in demo mode.');
+  supabase = {
+    auth: {
+      signOut: async (_opts?: any) => ({ error: null }),
+    },
+    from: () => ({
+      select: async () => ({ data: [], error: null }),
+      insert: async () => ({ data: [], error: null }),
+      update: async () => ({ data: [], error: null }),
+      delete: async () => ({ data: [], error: null }),
+    }),
+  } as any;
+}
+
+export { supabase };
 
 export async function cleanupAuthState() {
   try {

@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
-import DemoNotice from "@/components/ui/demo-notice";
 
 // Marketing Pages
 import Index from "./pages/Index";
@@ -86,7 +85,6 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-                <DemoNotice />
         </TooltipProvider>
       </AuthProvider>
     </QueryProvider>
