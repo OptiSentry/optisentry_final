@@ -8,11 +8,6 @@ import { AuthProvider } from "@/components/providers/auth-provider";
 
 // Marketing Pages
 import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Why from "./pages/Why";
-import UseCases from "./pages/UseCases";
-import Pricing from "./pages/Pricing";
-import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 // Auth Pages
@@ -58,11 +53,11 @@ const App = () => (
             <Routes>
               {/* Marketing Routes */}
               <Route path="/" element={<Home />} />
-              <Route path="/product" element={<Product />} />
-              <Route path="/why" element={<Why />} />
-              <Route path="/use-cases" element={<UseCases />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route path="/product" element={<Navigate to="/#product" replace />} />
+              <Route path="/why" element={<Navigate to="/#why" replace />} />
+              <Route path="/use-cases" element={<Navigate to="/#use-cases" replace />} />
+              <Route path="/pricing" element={<Navigate to="/#pricing" replace />} />
+              <Route path="/contact" element={<Navigate to="/#faq-feedback" replace />} />
               
               {/* Auth Routes */}
               <Route path="/auth/login" element={<AuthLogin />} />
