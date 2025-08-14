@@ -7,7 +7,12 @@ import { QueryProvider } from "@/components/providers/query-provider";
 import { AuthProvider } from "@/components/providers/auth-provider";
 
 // Marketing Pages
-import Index from "./pages/Index";
+import Home from "./pages/Home";
+import Product from "./pages/Product";
+import Why from "./pages/Why";
+import UseCases from "./pages/UseCases";
+import Pricing from "./pages/Pricing";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 // Auth Pages
@@ -52,7 +57,12 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               {/* Marketing Routes */}
-              <Route path="/" element={<Index />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/why" element={<Why />} />
+              <Route path="/use-cases" element={<UseCases />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
               
               {/* Auth Routes */}
               <Route path="/auth/login" element={<AuthLogin />} />
