@@ -5,9 +5,7 @@ const runtimeEnv = (typeof window !== 'undefined' && (window as any).__ENV__) ||
 const supabaseUrl = (runtimeEnv.VITE_SUPABASE_URL as string) ?? (import.meta.env.VITE_SUPABASE_URL as string)
 const supabaseAnonKey = (runtimeEnv.VITE_SUPABASE_ANON_KEY as string) ?? (import.meta.env.VITE_SUPABASE_ANON_KEY as string)
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('Supabase credentials missing. Running in demo mode.')
-}
+if (!supabaseUrl || !supabaseAnonKey) console.warn('Supabase credentials missing. Running in demo mode.')
 
 export const supabase = (supabaseUrl && supabaseAnonKey)
   ? createClient<Database>(supabaseUrl, supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } })
