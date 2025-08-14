@@ -149,7 +149,7 @@ const Index = () => {
 
 {
 /* Features Section */}
-        <section className="py-20">
+        <section id="why" className="py-20">
           <div className="container">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">
@@ -235,7 +235,7 @@ const Index = () => {
 </section>
 
 {/* Produkt Section */}
-<section id="product" className="py-20 relative">
+<section id="product-overview" className="py-20 relative">
   <div className="bg-grid"></div>
   <div className="container">
     <div className="text-center mb-16">
@@ -306,7 +306,50 @@ const Index = () => {
 </section>
 
 {
-/* Pricing Section */}
+
+
+{/* Use Cases */}
+<section id="use-cases" className="py-20">
+  <div className="container">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl font-bold mb-4">Wo ist OptiSentry nützlich?</h2>
+      <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        Als eigenständiges Datenschutz-Cockpit oder Ergänzung zu deinen bestehenden Systemen.
+      </p>
+    </div>
+    <div className="grid md:grid-cols-3 gap-8">
+      <Card className="card-hover glass">
+        <CardHeader>
+          <CardTitle>Startups</CardTitle>
+          <CardDescription>„Compliance ab Tag 1“</CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          Schnelle Einrichtung, Templates & Automatisierung – damit Fokus auf Produkt bleibt.
+        </CardContent>
+      </Card>
+      <Card className="card-hover glass">
+        <CardHeader>
+          <CardTitle>Enterprise</CardTitle>
+          <CardDescription>Skalierbare Governance</CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          RBAC, Richtlinien, Workflows und tiefe Protokollierung für Audits.
+        </CardContent>
+      </Card>
+      <Card className="card-hover glass">
+        <CardHeader>
+          <CardTitle>Agenturen & Partner</CardTitle>
+          <CardDescription>Mandanten-fähig</CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          Mehrere Kund:innen verwalten, White-Label und Reporting out-of-the-box.
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
+        {/* Pricing Section */}}
         <section className="py-20 bg-muted/50">
           <div className="container">
             <div className="text-center mb-16">
