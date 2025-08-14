@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import ThemeToggle from '@/components/ui/theme-toggle'
 import { useAuthContext } from '@/components/providers/auth-provider'
@@ -11,15 +11,15 @@ export default function MarketingLayout({ children }: Props) {
   const { isAuthenticated } = useAuthContext()
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="border-b">
+      <header className="sticky top-0 z-50 backdrop-blur bg-background/80 border-b">
         <div className="container flex h-16 items-center justify-between">
-          <div className="font-bold text-xl">OptiSentry</div>
+          <a href="#top" className="font-bold text-xl cursor-pointer">OptiSentry</a>
           <nav className="flex items-center space-x-2">
-            <Link to="/product" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Produkt</Link>
-            <Link to="/why" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Warum OptiSentry</Link>
-            <Link to="/use-cases" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Einsatz & Ergänzung</Link>
-            <Link to="/pricing" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Preise</Link>
-            <Link to="/contact" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Fragen & Feedback</Link>
+            <a href="#product" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Produkt</a>
+            <a href="#why" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Warum OptiSentry</a>
+            <a href="#use-cases" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Einsatz & Ergänzung</a>
+            <a href="#pricing" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Preise</a>
+            <a href="#faq-feedback" className="hidden md:inline-flex px-3 py-2 text-sm text-muted-foreground hover:text-foreground">Fragen & Feedback</a>
             <Button variant="ghost" onClick={() => navigate('/impressum')} className="hidden md:inline-flex">
               Rechtliches
             </Button>

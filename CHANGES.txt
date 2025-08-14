@@ -1,0 +1,5 @@
+- Converted marketing pages into single landing page with anchor sections in `Home.tsx`.
+- Added chart components (`KpiLineChart`, `KpiBarChart`, `KpiDonut`) with demo datasets and modal integration.
+- Updated router in `App.tsx` to redirect legacy marketing routes to anchors.
+- Revised marketing layout with sticky header and anchor navigation.
+- Added light theme variables and smooth scrolling enhancements in `index.css`.
